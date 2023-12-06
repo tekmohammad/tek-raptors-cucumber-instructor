@@ -22,7 +22,7 @@ Feature: Usage of Steps with parameters and Examples.
       | alex     | alex123     | 78    |
 
     #Scenario that John, Alex and Mohammad going to school with car
-  #When multiple scenarios using same exact steps with different
+  #When multiple scenarios using same exact steps with different data
   #Those scenarios can simplify with Scenario Outline and Examples.
   #Scenario outline must have Examples following
   #First row of example is key for column header
