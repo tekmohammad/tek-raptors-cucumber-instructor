@@ -8,12 +8,14 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
 public class GoogleSteps {
     //Instance Variable that hold value of driver;
-    private WebDriver driver;
+    public WebDriver driver;
 
     @Given("Open chrome browser")
     public void openBrowser() {
@@ -29,7 +31,9 @@ public class GoogleSteps {
 
     @When("type {string} in search box and click search")
     public void typeAndSearch(String searchText){
-        driver.findElement(By.name("q")).sendKeys(searchText);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.name("q")))
+                .sendKeys(searchText);
         //Selenium will press Enter on Keyboard
         driver.findElement(By.name("q")).sendKeys(Keys.RETURN);
     }
