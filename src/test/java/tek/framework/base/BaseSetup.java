@@ -23,4 +23,11 @@ public class BaseSetup {
     public WebDriver getDriver() {
         return driver;
     }
+
+    public void quitBrowser() {
+        //Null Check to avoid Null Pointer Exception
+        //If for any reason driver did not instantiate
+        if (driver != null)
+            driver.quit();
+    }
 }

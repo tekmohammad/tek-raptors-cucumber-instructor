@@ -1,16 +1,27 @@
 package tek.framework.utility;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import tek.framework.base.BaseSetup;
+
+import java.time.Duration;
 
 public class SeleniumUtilities extends BaseSetup {
 
+    private WebDriverWait getWait() {
+        return new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+    }
+    private WebElement waitForVisibility(By locator) {
+        return getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
     public String getElementText(By locator) {
-        String text = getDriver().findElement(locator).getText();
-        return text;
+        WebElement element= waitForVisibility(locator);
+        return element.getText();
     }
 
     public boolean isElementEnabled(By locator) {
-        return getDriver().findElement(locator).isEnabled();
+        return waitForVisibility(locator).isEnabled();
     }
 }
