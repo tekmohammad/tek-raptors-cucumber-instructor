@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import tek.framework.pages.HomePage;
 import tek.framework.utility.SeleniumUtilities;
 
 public class HomePageSteps extends SeleniumUtilities {
@@ -18,7 +19,7 @@ public class HomePageSteps extends SeleniumUtilities {
 
     @Then("Validate Title on top left corner")
     public void validateLeftCornerTitle() {
-        String actualTitle = getElementText(By.xpath("//div[@class='top-nav']/a"));
+        String actualTitle = getElementText(HomePage.HOME_PAGE_TILE);
 
         //Assertion in Cucumber using JUnit Assertion.
         //Assertions used to Validate and fail / pass tests.
