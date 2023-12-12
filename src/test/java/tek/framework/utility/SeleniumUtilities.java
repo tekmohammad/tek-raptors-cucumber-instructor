@@ -24,4 +24,16 @@ public class SeleniumUtilities extends BaseSetup {
     public boolean isElementEnabled(By locator) {
         return waitForVisibility(locator).isEnabled();
     }
+
+    public void clickOnElement(By locator) {
+        getWait().until(ExpectedConditions.elementToBeClickable(locator)).click();
+    }
+
+    public void sendText(By locator, String text) {
+        waitForVisibility(locator).sendKeys(text);
+    }
+
+    public boolean isElementDisplayed(By locator) {
+       return waitForVisibility(locator).isDisplayed();
+    }
 }

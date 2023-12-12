@@ -5,6 +5,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -37,6 +38,18 @@ public class HomePageSteps extends SeleniumUtilities {
         boolean isSignInEnabled =   isElementEnabled(HomePage.SING_IN_BUTTON);
         //Assert true check result of boolean or condition is true
         Assert.assertTrue(isSignInEnabled);
+    }
+
+    @When("Click on Sign In Button")
+    public void clickOnSignInButton() {
+        clickOnElement(HomePage.SING_IN_BUTTON);
+    }
+
+    @Then("Validate Account button is displayed")
+    public void validateAccountButtonIsDisplayed() {
+       boolean isAccountButtonDisplayed = isElementDisplayed(HomePage.ACCOUNT_BUTTON);
+       Assert.assertTrue("Account Button should be displayed true" ,
+               isAccountButtonDisplayed );
     }
 
 }
