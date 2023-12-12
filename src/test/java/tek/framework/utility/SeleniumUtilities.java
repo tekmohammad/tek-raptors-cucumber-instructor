@@ -9,4 +9,8 @@ public class SeleniumUtilities extends BaseSetup {
         String text = getDriver().findElement(locator).getText();
         return text;
     }
+
+    public boolean isElementEnabled(By locator) {
+        return getDriver().findElement(locator).isEnabled();
+    }
 }
