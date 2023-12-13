@@ -1,3 +1,4 @@
+@Smoke
 Feature: Home Page Validation
 
   Scenario: Validate home page title.

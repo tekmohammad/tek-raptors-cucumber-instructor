@@ -48,6 +48,8 @@ public class HomePageSteps extends SeleniumUtilities {
     @Then("Validate Account button is displayed")
     public void validateAccountButtonIsDisplayed() {
        boolean isAccountButtonDisplayed = isElementDisplayed(HomePage.ACCOUNT_BUTTON);
+       //Message in Assertions only display if assertion failed
+        // Better to have a good message for each assertion.
        Assert.assertTrue("Account Button should be displayed true" ,
                isAccountButtonDisplayed );
     }
