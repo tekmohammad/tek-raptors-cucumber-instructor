@@ -1,9 +1,14 @@
 package tek.framework.steps;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import tek.framework.pages.AccountProfilePage;
 import tek.framework.pages.CreateAccountPage;
 import tek.framework.utility.SeleniumUtilities;
+
+import java.util.List;
+import java.util.Map;
 
 public class CreateAccountSteps extends SeleniumUtilities {
 
@@ -27,5 +32,25 @@ public class CreateAccountSteps extends SeleniumUtilities {
     @When("Click on sign up button")
     public void clickOnSignUpButton() {
         clickOnElement(CreateAccountPage.SIGN_UP_BUTTON);
+    }
+
+    @When("Fill up account form with DataTable")
+    public void fill_up_account_form_with_data_table(DataTable dataTable) {
+        //Change Data Table to Map<String, String>
+        Map<String, String> data = dataTable.asMap();
+
+        sendText(CreateAccountPage.NAME_INPUT, data.get("name"));
+        sendText(CreateAccountPage.EMAIL_INPUT, data.get("email"));
+        sendText(CreateAccountPage.PASSWORD_INPUT, data.get("password"));
+        sendText(CreateAccountPage.CONFIRM_PASS_INPUT, data.get("password"));
+    }
+
+    @When("Fill up account form with list data table")
+    public void fill_up_account_form_with_list_data_table(DataTable dataTable) {
+       List<String> data= dataTable.asList();
+       sendText(CreateAccountPage.NAME_INPUT, data.get(0));
+       sendText(CreateAccountPage.EMAIL_INPUT, data.get(1));
+       sendText(CreateAccountPage.PASSWORD_INPUT, data.get(2));
+       sendText(CreateAccountPage.CONFIRM_PASS_INPUT, data.get(2));
     }
 }

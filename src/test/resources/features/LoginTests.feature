@@ -18,4 +18,4 @@ Feature: Login Functionality tests
       | username                    | password      | errorMessage               |
       | wrongusername@Tekschool.com | Password@123  | wrong username or password |
       | mohammad@Tekschool.com      | wrongPass@123 | wrong username or password |
-      | wrongusername@Tekschool.com | wrongPass@123 | wrong / Invalid username or password |
+      | wrongusername@Tekschool.com | wrongPass@123 | wrong username or password |
