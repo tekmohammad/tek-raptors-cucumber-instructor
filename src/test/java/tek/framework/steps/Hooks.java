@@ -2,6 +2,9 @@ package tek.framework.steps;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import tek.framework.utility.SeleniumUtilities;
 
 public class Hooks extends SeleniumUtilities {
@@ -13,7 +16,14 @@ public class Hooks extends SeleniumUtilities {
     }
 
     @After
-    public void afterScenarios() {
+    public void afterScenarios(Scenario scenario) {
+        if (scenario.isFailed()) {
+            //Selenium utility to take Screenshot
+            TakesScreenshot takesScreenshot = (TakesScreenshot) getDriver();
+            byte[] screenshot = takesScreenshot.getScreenshotAs(OutputType.BYTES);
+            //Append Screen shot to report.
+            scenario.attach(screenshot, "image/png", "screenshot");
+        }
         //quit driver
         quitBrowser();
     }

@@ -4,7 +4,7 @@ Feature: Login Functionality tests
   Background: Test setup navigate to sign in page.
     When Click on Sign In Button
 
-
+  @Positive_Login
   Scenario: Positive Test. login with valid credentials.
     And Enter username "mohammad@Tekschool.com" and password "Password@123"
     And Click on Login button
@@ -18,4 +18,4 @@ Feature: Login Functionality tests
       | username                    | password      | errorMessage               |
       | wrongusername@Tekschool.com | Password@123  | wrong username or password |
       | mohammad@Tekschool.com      | wrongPass@123 | wrong username or password |
-      | wrongusername@Tekschool.com | wrongPass@123 | wrong username or password |
+      | wrongusername@Tekschool.com | wrongPass@123 | wrong / Invalid username or password |
