@@ -11,7 +11,8 @@ import org.junit.runner.RunWith;
         tags = "@Smoke", //with tags in TestRunner we can run Feature or Scenario in group
         dryRun = false, //if set to TRUE scan for unimplemented steps without executing all the steps.
         plugin = {
-                "html:target/cucumber_report/report.html"
+                "html:target/cucumber_report/report.html",
+                "json:target/jsonReports/report.json"
         }
 )
 public class TestRunner {
