@@ -2,6 +2,8 @@ package tek.framework.base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
 
@@ -11,8 +13,24 @@ public class BaseSetup {
     //Using Encapsulation we are limiting direct access to the WebDriver
     //Variable so no other object can change it directly.
     private static WebDriver driver;
+
     public void setupBrowser() {
-        driver = new ChromeDriver();
+        //Cross Browser Testing
+        String browserType = "chrome";
+        switch (browserType.toLowerCase()) {
+            case "chrome":
+                driver = new ChromeDriver();
+                break;
+            case "firefox" :
+                driver = new FirefoxDriver();
+                break;
+            case "edge" :
+                driver = new EdgeDriver();
+                break;
+            default:
+                throw new RuntimeException("Wrong browser type failing test");
+        }
+
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://retail.tekschool-students.com/");
